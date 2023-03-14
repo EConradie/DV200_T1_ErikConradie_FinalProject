@@ -8,11 +8,11 @@ function BasicNav() {
     return (
         <Navbar bg='dark' variant='dark'>
             <Container>
-                <Navbar.Brand href="/">SpaceX</Navbar.Brand>
-                <Nav className='me-auto'>
+                <Navbar.Brand href="/">FormulaStats</Navbar.Brand>
+                <Nav className='me-auto' style={{ paddingRight: '10px' }}>
                     <Nav.Link href="/">Landing</Nav.Link>
                     <Nav.Link href="/compare">Compare</Nav.Link>
-                    <Nav.Link href="/time">TimeLine</Nav.Link>     
+                    <Nav.Link href="/time">Timeline</Nav.Link>     
                 </Nav>
             </Container>
         </Navbar>
