@@ -8,7 +8,7 @@ function BasicNav() {
     return (
         <Navbar bg='dark' variant='dark'>
             <Container>
-                <Navbar.Brand href="/">FormulaStats</Navbar.Brand>
+                <Navbar.Brand href="/">StatsFormula</Navbar.Brand>
                 <Nav className='me-auto' style={{ paddingRight: '10px' }}>
                     <Nav.Link href="/">Landing</Nav.Link>
                     <Nav.Link href="/compare">Compare</Nav.Link>
