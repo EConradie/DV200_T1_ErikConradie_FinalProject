@@ -1,9 +1,19 @@
 .App {
  
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background: #090909;
+  background: #121212;
   color: white;
+}
 
-  
+#hero {
+  position: absolute; 
+  left: 0;
+  top: 0;
+  opacity: 0.4;
+  box-shadow: inset 10px 10px 10px 10px black;
+  padding-top: -10px;
+  width: 100%;
+  height: 750px;
+  object-fit: cover;
 }
 
