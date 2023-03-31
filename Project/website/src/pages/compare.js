@@ -6,53 +6,63 @@ import '../App.css';
 function Compare() {
 
     const [apiData, setApiData] = useState([]);
-    const [teamName, setTeamName] = useState(['']);
-    const [teamPoints, setTeamPoints] = useState(['']);
     const [driverName, setDriverName] = useState('');
-    const [driverTeam, setDriverTeam] = useState('');
+    const [driverAbbr, setDriverAbbr] = useState('');
+    const [driverNat, setDriverNat] = useState('');
+    const [driverNum, setDriverNum] = useState('');
     const [driverPoints, setDriverPoints] = useState(['']);
+    const [driverTeam, setDriverTeam] = useState('');
+    const [driverPod, setDriverPod] = useState(['']);
+    const [driverPrix, setDriverPrix] = useState(['']);
+    const [driverChamps, setDriverChamps] = useState(['']);
 
-
+    var DriversArray = [];
 
     useEffect(() => {
 
-        axios.get('https://api-formula-1.p.rapidapi.com/rankings/teams', {
+        axios.get('https://api-formula-1.p.rapidapi.com/drivers', {
             headers: {
                 'x-rapidapi-host': 'api-formula-1.p.rapidapi.com',
 
-                //'x-rapidapi-key': 'e62dc10aa5msh39921492f48bc1ep1c251fjsn53b4cd5e4cf1'
-            }, params: { season: '2021' }
+                'x-rapidapi-key': 'e62dc10aa5msh39921492f48bc1ep1c251fjsn53b4cd5e4cf1'
+            }, params: { id: '20' }
         }).then((response) => {
+
+            // for (let k = 0; k < 20; k++) {
+
             const index = 0;
             setApiData(response.data)
-            setTeamName(response.data.response[index].team.name)
-
-            for (let i = 0; i > 5; i++) {
-            }
-
-            setTeamPoints(response.data.response[index].points)
-
-        }).catch((error) => {
-            console.log(error);
-        })
-
-        axios.get('https://api-formula-1.p.rapidapi.com/rankings/drivers', {
-            headers: {
-                'x-rapidapi-host': 'api-formula-1.p.rapidapi.com',
-
-                //'x-rapidapi-key': 'e62dc10aa5msh39921492f48bc1ep1c251fjsn53b4cd5e4cf1'
-            }, params: { season: '2021' }
-        }).then((response) => {
-            const index = 0;
-            setApiData(response.data)
-            setDriverName(response.data.response[index].driver.name)
-            setDriverPoints(response.data.response[index].points)
-            setDriverTeam(response.data.response[index].team.name)
+            console.log(response.data)
+            setDriverName(response.data.response[index].name)
+            setDriverAbbr(response.data.response[index].abbr)
+            setDriverNat(response.data.response[index].nationality)
+            setDriverNum(response.data.response[index].number)
+            setDriverPoints(response.data.response[index].career_points)
+            setDriverTeam(response.data.response[index].teams[0].team)
+            setDriverPod(response.data.response[index].podiums)
+            setDriverPrix(response.data.response[index].grands_prix_entered)
+            setDriverChamps(response.data.response[index].world_championships)
 
         }).catch((error) => {
             console.log(error);
         })
     }, [])
+
+    var tempObj = {
+        name: driverName,
+        abbr: driverAbbr,
+        nat: driverNat,
+        num: driverNum,
+        points: driverPoints,
+        team: driverTeam,
+        pod: driverPod,
+        prix: driverPrix,
+        champs: driverChamps,
+    }
+
+    DriversArray.push(tempObj);
+
+    console.log(DriversArray);
 
 
     const style = {
