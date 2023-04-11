@@ -152,7 +152,7 @@ function Compare() {
             <div style={{ width: '49%', height: '200px', float: 'right' }}>
 
                 <div style={{ width: '28%', height: '50px', float: 'left', marginLeft: '5%' }}>
-                    <p style={{ fontSize: '20px', marginBottom: '5px', color: "#C01F1F" }}>Points</p>
+                    <p style={{ fontSize: '20px', marginBottom: '5px', color: "#C01F1F"}}>Points</p>
                     <p style={{ fontSize: '30px', marginBottom: '5px', backgroundColor: '#212529', borderRadius: '10px', textAlign: 'center' }}>4165.5</p>
                 </div>
                 <div style={{ width: '28%', height: '50px', float: 'left', marginLeft: '3%' }}>
