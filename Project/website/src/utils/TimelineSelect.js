@@ -1,7 +1,7 @@
-export const TimeLineSelecion = [
+export const TimeLineSelection = [
     {
         value: 1,
-        label: 'Points',
+        label: 'Total Points',
 
     },
     {
@@ -11,12 +11,12 @@ export const TimeLineSelecion = [
     },
     {
         value: 3,
-        label: 'Prix',
+        label: 'Prixs Completed',
 
     },
     {
         value: 4,
-        label: 'Champs',
+        label: 'Championships Won',
 
 
     }

@@ -9,11 +9,11 @@ import { DriverDetails } from '../utils/DriverDetails';
 import { Chart, ArcElement } from 'chart.js'
 import { CategoryScale } from 'chart.js';
 import { registerables } from 'chart.js';
-import { TimeLineSelecion } from '../utils/TimelineSelect';
+import { TimeLineSelection } from '../utils/TimelineSelect';
 
 function Timeline() {
 
-    const [TLSelected, setTLSelected] = useState(0);
+    const [TLSelected, setTLSelected] = useState(1);
     const [DisplayData, setDisplayData] = useState();
 
     var DataData = [];
@@ -22,8 +22,6 @@ function Timeline() {
     const handleChange1 = e => {
         setTLSelected(e.value);
     }
-
-
 
 
     const [LineChartData1, setLineChartData1] = useState({
@@ -117,8 +115,6 @@ function Timeline() {
         DataData = LineChartData4
     }
 
-    console.log(DataData)
-
     return (
 
         <div style={{ width: "80%", height: '1000px', margin: 'auto', marginTop: '4%' }}>
@@ -126,8 +122,8 @@ function Timeline() {
 
             <div style={{ width: "40%",margin: 'auto', marginTop: '4%' }}><Select
                 placeholder="Select Option"
-                value={TimeLineSelecion.find(obj => obj.value === TLSelected)} // set selected value
-                options={TimeLineSelecion} // set list of the data
+                value={TimeLineSelection.find(obj => obj.value === TLSelected)} // set selected value
+                options={TimeLineSelection} // set list of the data
                 onChange={handleChange1} // assign onChange function
                 styles={{
                     control: (baseStyles, state) => ({
