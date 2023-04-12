@@ -28,11 +28,11 @@
 
 export const DriverDetails = [
     {
-        abbr: 'Max Verstappen',
+        abbr: 'VER',
         champs: 2,
         name: 'Max Verstappen',
         nat: "Dutch",
-        number: 1,
+        num: 1,
         pod: 80,
         points: 2080.5,
         prix: 166,
@@ -45,7 +45,7 @@ export const DriverDetails = [
         champs: 7,
         name: "Lewis Hamilton",
         nat: "British",
-        number: 44,
+        num: 44,
         pod: 192,
         points: 4443.5,
         prix: 313,
