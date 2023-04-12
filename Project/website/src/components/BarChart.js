@@ -4,14 +4,14 @@ import { Bar } from "react-chartjs-2";
 function BarChart({ chartData }) {
   return (
     <div className="chart-container">
-      <h2 style={{ textAlign: "center" }}>Bar Chart</h2>
+      <h2 style={{ textAlign: "center" }}>Points Per Driver</h2>
       <Bar
         data={chartData}
         options={{
           plugins: {
             title: {
               display: true,
-              text: "Users Lost (2016-2020)",
+              text: "Points",
               Color: "white"
             },
             legend: {

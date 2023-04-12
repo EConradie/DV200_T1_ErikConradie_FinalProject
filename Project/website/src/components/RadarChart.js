@@ -11,7 +11,7 @@ function RadarChart({ chartData }) {
           plugins: {
             title: {
               display: true,
-              text: "Revenue Generated (2016-2020)"
+              text: "Driver's Overall"
             },
             legend: {
               display: false

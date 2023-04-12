@@ -10,13 +10,18 @@ import CardHeader from 'react-bootstrap/esm/CardHeader';
 
 function Landing() {
 
-    const [apiData, setApiData] = useState([]);
     const [teamName, setTeamName] = useState(['']);
     const [teamPoints, setTeamPoints] = useState(['']);
     const [driverName, setDriverName] = useState('');
     const [driverTeam, setDriverTeam] = useState('');
     const [driverPoints, setDriverPoints] = useState(['']);
 
+    var DriverNames = [];
+    var DriverPoints = [];
+    var DriverTeams = [];
+
+    var TeamNames = [];
+    var TeamPoints = [];
 
 
     useEffect(() => {
@@ -28,14 +33,12 @@ function Landing() {
                 //'x-rapidapi-key': 'e62dc10aa5msh39921492f48bc1ep1c251fjsn53b4cd5e4cf1'
             }, params: { season: '2021' }
         }).then((response) => {
-            const index = 0;
-            setApiData(response.data)
-            setTeamName(response.data.response[index].team.name)
 
-            for (let i = 0; i > 5; i++) {
-            }
+            setTeamName(response.data.response[0].team.name)
 
-            setTeamPoints(response.data.response[index].points)
+            
+
+            setTeamPoints(response.data.response[0].points)
 
         }).catch((error) => {
             console.log(error);
@@ -45,19 +48,24 @@ function Landing() {
             headers: {
                 'x-rapidapi-host': 'api-formula-1.p.rapidapi.com',
 
-                //'x-rapidapi-key': 'e62dc10aa5msh39921492f48bc1ep1c251fjsn53b4cd5e4cf1'
+                'x-rapidapi-key': 'e62dc10aa5msh39921492f48bc1ep1c251fjsn53b4cd5e4cf1'
             }, params: { season: '2021' }
         }).then((response) => {
-            const index = 0;
-            setApiData(response.data)
-            setDriverName(response.data.response[index].driver.name)
-            setDriverPoints(response.data.response[index].points)
-            setDriverTeam(response.data.response[index].team.name)
+
+            for (let k = 0; k < 5; k++) {
+
+                DriverNames.push(response.data.response[k].driver.name);
+                DriverPoints.push(response.data.response[k].points);
+                DriverTeams.push(response.data.response[k].team.name);
+
+            }
 
         }).catch((error) => {
             console.log(error);
         })
     }, [])
+
+    console.log(DriverNames);
 
 
     const style = {
@@ -88,7 +96,7 @@ function Landing() {
 
             <div style={{ float: 'left', overflow: 'hidden', width: '50%', position: 'relative' }}>
                 <h2 style={{ paddingLeft: '0%', fontWeight: 'bold' }}>TEAM STANDINGS</h2>
-                <Table variant='dark' striped hover style={{ margin: '5%', color: 'white', marginLeft: '0%', boxShadow: '10px 5px 5px black' }}>
+                <Table variant='dark' striped hover style={{ margin: '5%', color: 'white', marginLeft: '0%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
                     <thead style={{ color: '#C01F1F' }} >
                         <tr>
                             <th style={{ backgroundColor: 'transparent', fontSize: '20px' }}>Pos</th>
@@ -133,7 +141,7 @@ function Landing() {
 
             <div style={{ float: 'left', overflow: 'hidden', width: '50%', position: 'relative' }}>
                 <h2 style={{ paddingLeft: '5%', fontWeight: 'bold' }}>DRIVER STANDINGS</h2>
-                <Table striped hover variant='dark' style={{ margin: '5%', color: 'white', boxShadow: '10px 5px 5px black' }}>
+                <Table striped hover variant='dark' style={{ margin: '5%', color: 'white', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
                     <thead style={{ color: '#C01F1F', background: '0' }}>
                         <tr >
                             <th style={{ backgroundColor: 'transparent', fontSize: '20px' }}>Pos</th>
@@ -179,46 +187,46 @@ function Landing() {
             <h2 style={{ paddingTop: '10%', fontWeight: 'bold' }}>UPCOMING EVENTS</h2>
             <div style={{ marginTop: '3%', marginBottom: '7%', color: 'white' }} >
 
-                <Card style={{ width: '23%', margin: '0%', marginRight: '2%', float: 'left', textAlign: 'center', backgroundColor: 'transparent' }}>
+                <Card style={{ width: '23%', margin: '0%', marginRight: '2%', float: 'left', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
                     <Card.Body style={{ backgroundColor: '#212529', paddingBottom: '10%', borderRadius: '20px' }} >
                         <Card.Header as='h3' style={{ color: '#C01F1F' }}>Abu Dhabi Grand Prix</Card.Header>
                         <Card.Title ></Card.Title>
 
                         <div><img src='https://media.api-sports.io/formula-1/circuits/23.png'></img></div>
                         <Card.Text as='h4' style={{ marginTop: '10%' }}>
-                        <p>Abu Dhabi</p>
-                        <p>Yas Marina, Abou Dabi</p>
+                            <p>Abu Dhabi</p>
+                            <p>Yas Marina, Abou Dabi</p>
                         </Card.Text>
                     </Card.Body>
                 </Card>
-                <Card style={{ width: '23%', margin: '0%', marginRight: '2%', float: 'left', textAlign: 'center', backgroundColor: 'transparent' }}>
+                <Card style={{ width: '23%', margin: '0%', marginRight: '2%', float: 'left', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
                     <Card.Body style={{ backgroundColor: '#212529', paddingBottom: '10%', borderRadius: '20px' }} >
                         <Card.Header as='h3' style={{ color: '#C01F1F' }}>Abu Dhabi Grand Prix</Card.Header>
                         <Card.Title ></Card.Title>
                         <div><img src='https://media.api-sports.io/formula-1/circuits/23.png'></img></div>
                         <Card.Text as='h4' style={{ marginTop: '10%' }}>
-                        <p>Abu Dhabi</p>
-                        <p>Yas Marina, Abou Dabi</p>
+                            <p>Abu Dhabi</p>
+                            <p>Yas Marina, Abou Dabi</p>
                         </Card.Text>
                     </Card.Body>
-                </Card><Card style={{ width: '23%', margin: '0%', marginRight: '2%', float: 'left', textAlign: 'center', backgroundColor: 'transparent' }}>
+                </Card><Card style={{ width: '23%', margin: '0%', marginRight: '2%', float: 'left', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
                     <Card.Body style={{ backgroundColor: '#212529', paddingBottom: '10%', borderRadius: '20px' }} >
                         <Card.Header as='h3' style={{ color: '#C01F1F' }}>Abu Dhabi Grand Prix</Card.Header>
                         <Card.Title ></Card.Title>
                         <div><img src='https://media.api-sports.io/formula-1/circuits/23.png'></img></div>
                         <Card.Text as='h4' style={{ marginTop: '10%' }}>
-                        <p>Abu Dhabi</p>
-                        <p>Yas Marina, Abou Dabi</p>
+                            <p>Abu Dhabi</p>
+                            <p>Yas Marina, Abou Dabi</p>
                         </Card.Text>
                     </Card.Body>
-                </Card><Card style={{ width: '23%', margin: '0%', marginRight: '2%', float: 'left', textAlign: 'center', backgroundColor: 'transparent' }}>
+                </Card><Card style={{ width: '23%', margin: '0%', marginRight: '2%', float: 'left', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
                     <Card.Body style={{ backgroundColor: '#212529', paddingBottom: '10%', borderRadius: '20px' }} >
                         <Card.Header as='h3' style={{ color: '#C01F1F' }}>Abu Dhabi Grand Prix</Card.Header>
                         <Card.Title ></Card.Title>
                         <div><img src='https://media.api-sports.io/formula-1/circuits/23.png'></img></div>
                         <Card.Text as='h4' style={{ marginTop: '10%' }}>
-                        <p>Abu Dhabi</p>
-                        <p>Yas Marina, Abou Dabi</p>
+                            <p>Abu Dhabi</p>
+                            <p>Yas Marina, Abou Dabi</p>
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -227,14 +235,14 @@ function Landing() {
             <div style={{ float: 'left', overflow: 'hidden', width: '50%', position: 'relative', marginTop: '4%', marginBottom: '10%' }}>
                 <h2 style={{ paddingBottom: '5%', fontWeight: 'bold' }}>TOP TEAM DASHBOARD</h2>
 
-                <Card style={{ width: '96%', margin: '0%', marginRight: '2%', float: 'left', backgroundColor: 'transparent' }}>
+                <Card style={{ width: '96%', margin: '0%', marginRight: '2%', float: 'left', backgroundColor: 'transparent', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
                     <Card.Body style={{ backgroundColor: '#212529', paddingBottom: '5%', borderRadius: '20px' }} >
                         <Card.Header as='h3' style={{ color: '#C01F1F' }}>Red Bull Racing</Card.Header>
                         <Card.Title ></Card.Title>
                         <Card.Text></Card.Text>
 
                         <div style={{ backgroundColor: '#121212', width: "50%", float: 'left', borderRadius: '10px', marginBottom: '5%' }}>
-                            <img style={{width:"100%"}} src='https://media.api-sports.io/formula-1/teams/1.png'></img>
+                            <img style={{ width: "100%" }} src='https://media.api-sports.io/formula-1/teams/1.png'></img>
                         </div>
                         <div style={{ width: "50%", float: 'right', textAlign: 'center' }}>
                             <p style={{ fontSize: '15px', marginBottom: '5px', color: "#C01F1F" }}>World Championships Won</p>
@@ -247,28 +255,28 @@ function Landing() {
                             <p style={{ fontSize: '25px', marginBottom: '5px' }}>76</p>
                         </div>
 
-                        <div style={{width: "60%", float: 'left', borderRadius: '10px' }}>
+                        <div style={{ width: "60%", float: 'left', borderRadius: '10px' }}>
 
                             <p style={{ fontSize: '15px', marginBottom: '5px', color: "#C01F1F" }}>Based</p>
                             <p style={{ fontSize: '22px', marginBottom: '5px' }}>Milton Keynes, United Kingdom</p>
 
                         </div>
 
-                        <div style={{width: "40%", float: 'left', borderRadius: '10px' }}>
+                        <div style={{ width: "40%", float: 'left', borderRadius: '10px' }}>
 
                             <p style={{ fontSize: '15px', marginBottom: '5px', color: "#C01F1F" }}>President</p>
                             <p style={{ fontSize: '22px', marginBottom: '5px' }}>Dietrich Mateschitz</p>
 
                         </div>
 
-                        <div style={{width: "60%", float: 'left', borderRadius: '10px' }}>
+                        <div style={{ width: "60%", float: 'left', borderRadius: '10px' }}>
 
                             <p style={{ fontSize: '15px', marginBottom: '5px', color: "#C01F1F" }}>Director</p>
                             <p style={{ fontSize: '22px', marginBottom: '5px' }}>Christian Horner</p>
 
                         </div>
 
-                        <div style={{width: "40%", float: 'left', borderRadius: '10px' }}>
+                        <div style={{ width: "40%", float: 'left', borderRadius: '10px' }}>
 
                             <p style={{ fontSize: '15px', marginBottom: '5px', color: "#C01F1F" }}>Technical Manager</p>
                             <p style={{ fontSize: '22px', marginBottom: '5px' }}>Pierre Waché</p>
@@ -283,14 +291,14 @@ function Landing() {
             <div style={{ float: 'left', overflow: 'hidden', width: '50%', position: 'relative', marginTop: '4%', marginBottom: '10%' }}>
                 <h2 style={{ paddingBottom: '5%', fontWeight: 'bold' }}>TOP DRIVER DASHBOARD</h2>
 
-                <Card style={{ width: '96%', margin: '0%', marginRight: '2%', float: 'left', backgroundColor: 'transparent' }}>
-                <Card.Body style={{ backgroundColor: '#212529', paddingBottom: '5%', borderRadius: '20px' }} >
+                <Card style={{ width: '96%', margin: '0%', marginRight: '2%', float: 'left', backgroundColor: 'transparent', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
+                    <Card.Body style={{ backgroundColor: '#212529', paddingBottom: '5%', borderRadius: '20px' }} >
                         <Card.Header as='h3' style={{ color: '#C01F1F' }}>Lewis Hamilton</Card.Header>
                         <Card.Title ></Card.Title>
                         <Card.Text></Card.Text>
 
                         <div style={{ backgroundColor: '#121212', width: "50%", float: 'left', borderRadius: '10px', marginBottom: '5%' }}>
-                            <img style={{width:"100%"}} src='https://media.api-sports.io/formula-1/drivers/20.png'></img>
+                            <img style={{ width: "100%" }} src='https://media.api-sports.io/formula-1/drivers/20.png'></img>
                         </div>
                         <div style={{ width: "50%", float: 'right', textAlign: 'center' }}>
                             <p style={{ fontSize: '15px', marginBottom: '5px', color: "#C01F1F" }}>Team</p>
@@ -304,28 +312,28 @@ function Landing() {
 
                         </div>
 
-                        <div style={{width: "60%", float: 'left', borderRadius: '10px' }}>
+                        <div style={{ width: "60%", float: 'left', borderRadius: '10px' }}>
 
                             <p style={{ fontSize: '15px', marginBottom: '5px', color: "#C01F1F" }}>Nationality</p>
                             <p style={{ fontSize: '22px', marginBottom: '5px' }}>British</p>
 
                         </div>
 
-                        <div style={{width: "40%", float: 'left', borderRadius: '10px' }}>
+                        <div style={{ width: "40%", float: 'left', borderRadius: '10px' }}>
 
                             <p style={{ fontSize: '15px', marginBottom: '5px', color: "#C01F1F" }}>Birthdate</p>
                             <p style={{ fontSize: '22px', marginBottom: '5px' }}>1985-01-07</p>
 
                         </div>
 
-                        <div style={{width: "60%", float: 'left', borderRadius: '10px' }}>
+                        <div style={{ width: "60%", float: 'left', borderRadius: '10px' }}>
 
                             <p style={{ fontSize: '15px', marginBottom: '5px', color: "#C01F1F" }}>Podiums</p>
                             <p style={{ fontSize: '22px', marginBottom: '5px' }}>182</p>
 
                         </div>
 
-                        <div style={{width: "40%", float: 'left', borderRadius: '10px' }}>
+                        <div style={{ width: "40%", float: 'left', borderRadius: '10px' }}>
 
                             <p style={{ fontSize: '15px', marginBottom: '5px', color: "#C01F1F" }}>Number</p>
                             <p style={{ fontSize: '22px', marginBottom: '5px' }}>44</p>
